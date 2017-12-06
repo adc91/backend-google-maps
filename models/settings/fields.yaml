@@ -1,0 +1,19 @@
+tabs:
+  fields:
+    address_map_key:
+      label: 'aldea.backendmaps::lang.settings.address_map_key'
+      comment: 'aldea.backendmaps::lang.settings.address_map_key_comment'
+      size: small
+      span: left
+      type: text
+      tab: 'aldea.backendmaps::lang.settings.tab'
+    address_map:
+      label: 'aldea.backendmaps::lang.settings.address_map'
+      comment: 'aldea.backendmaps::lang.settings.address_map_comment'
+      size: small
+      span: left
+      type: backendmaps
+      fieldPosition:
+          latitude: '37.386051'
+          longitude: '-122.083855'
+      tab: 'aldea.backendmaps::lang.settings.tab'
