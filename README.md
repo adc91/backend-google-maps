@@ -1,26 +1,25 @@
 Backend Google Maps
 =============
 
-###Easily and quickly integrate a Google Maps field into your Backend Forms.
+### Easily and quickly integrate a Google Maps field into your Backend Forms.
 
 This plugin provides a Form Widget to integrate a Google Maps map to a Backend Form in a simple and fast way.
 
 Requirements:
 * Get the Google Maps KEY API. For more information, visit the following link: https://developers.google.com/maps/documentation/javascript/get-api-key?hl=EN
 
-####Features
+#### Features
 * Integrate a Google Maps map into your Backend Forms.
-* Get the LATITUDE and LONGITUDE positions in the Frontend of your website.
 
 *If you want to help adding features, any contribution in the official Github repository will be of great help.*
 
-####Like this plugin?
+#### Like this plugin?
 If you like this plugin, give this plugin a Like or Make donation with PayPal: https://www.paypal.me/adc91
 
-#Documentation
+# Documentation
 
-#####**Installation**
+##### **Installation**
 To install this plugin you have to click on __add to project__ or need to type __aldea.backendmaps__ in Backend *System > updates > intall plugin*
 
-####Configuration
+#### Configuration
 To configure this Plugin goto Backend *System* then find *MISC* in left side bar, then click on *Backend Google Maps* , you will get Configuration options (refer screenshots)
