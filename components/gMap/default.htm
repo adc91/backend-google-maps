@@ -1,0 +1,28 @@
+<!-- Map -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key={{__SELF__.apiKey}}"></script>
+<div id="{{__SELF__.id}}" style="height: {{__SELF__.property('height')}}; width: {{__SELF__.property('width')}};"></div>
+<script>
+function initialize()
+{
+    var center = new google.maps.LatLng({{__SELF__.latitude}}, {{__SELF__.longitude}});
+
+    var mapOptions = {
+        zoom: {{__SELF__.property('zoom')}},
+        center: center,
+        mapTypeId: google.maps.MapTypeId.{{__SELF__.property('mapTypeId')}}
+    }
+
+    var map = new google.maps.Map(document.getElementById('{{__SELF__.id}}'), mapOptions);
+
+    {% if (__SELF__.property('showMarker')) %}
+    var beachMarker = new google.maps.Marker({
+        position: center,
+        {% if (__SELF__.property('animateMarker')) %}
+        animation: google.maps.Animation.DROP,
+        {% endif %}
+        map: map
+    });
+    {% endif %}
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>

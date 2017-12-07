@@ -48,6 +48,13 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerComponents()
+    {
+        return [
+            'Aldea\BackendMaps\Components\gMap' => 'gmap'
+        ];
+    }
+
     public function registerFormWidgets()
     {
         return [
@@ -57,5 +64,4 @@ class Plugin extends PluginBase
             ]
         ];
     }
-
 }

@@ -1,2 +1,4 @@
 1.0.1:
       - First version of Backend Google Maps
+1.0.2
+      - The gmap component is added to display the map in the frontend.
