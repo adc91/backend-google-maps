@@ -32,5 +32,5 @@ function placeMarker(mapDiv, index, market, location)
 {
     marker[index].setPosition(location);
     var setMapPosition = [marker[index].getPosition().lat(), marker[index].getPosition().lng()];
-    $('#' + mapDiv + '-div').val(setMapPosition.join(','));
+    $('#' + mapDiv).val(setMapPosition.join(','));
 }

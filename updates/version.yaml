@@ -1,4 +1,6 @@
 1.0.1:
   - First version of Backend Google Maps
 1.0.2:
-  git - The gmap component is added to display the map in the frontend.
+  - The gmap component is added to display the map in the frontend.
+1.0.3:
+  - Now it is already possible to instantiate more than one map in the same view.
