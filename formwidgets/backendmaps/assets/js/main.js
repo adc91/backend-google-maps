@@ -1,43 +1,36 @@
-$(function(){
-  
-  var map;
-  var marker;
+var marker = new Array;
 
-  function inicializar(x, y, zoom, custom) {
-    var latlng = new google.maps.LatLng(x, y);
+function inicializar(x, y, zoom, index, mapDiv, custom)
+{
+    let latlng = new google.maps.LatLng(x, y);
 
-    var myOptions = {
-      zoom: zoom,
-      center: latlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+    let myOptions = {
+        zoom: zoom,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    map = new google.maps.Map(document.getElementById("map"), myOptions);
+    let map = new google.maps.Map(document.getElementById(mapDiv + '-div'), myOptions);
 
-    if(custom)
-      latlng = new google.maps.LatLng(x, y);
-    else
-      latlng = new google.maps.LatLng(0, 0);
+    if (custom) {
+        latlng = new google.maps.LatLng(x, y);
+    } else {
+        latlng = new google.maps.LatLng(0, 0);
+    }
 
-    marker = new google.maps.Marker({
-      position: latlng,        
-      map: map
-    }); 
+    marker[index] = new google.maps.Marker({
+        position: latlng,        
+        map: map
+    });
 
     google.maps.event.addListener(map, 'click', function(event) {
-      placeMarker(event.latLng);
-    }); 
-  }
+        placeMarker(mapDiv, index, marker, event.latLng);
+    });  
+}
 
-  function placeMarker(location) {
-    marker.setPosition(location);
-
-    var setMapPosition = [marker.getPosition().lat(), marker.getPosition().lng()];
-    
-    $("#" + inputLatLngID).val(setMapPosition.join(','));
-  }
-
-  var getMapPosition = $("#" + inputLatLngID).val().split(',');
-  
-  inicializar(getMapPosition[0], getMapPosition[1], 15, true);
-});
+function placeMarker(mapDiv, index, market, location)
+{
+    marker[index].setPosition(location);
+    var setMapPosition = [marker[index].getPosition().lat(), marker[index].getPosition().lng()];
+    $('#' + mapDiv + '-div').val(setMapPosition.join(','));
+}

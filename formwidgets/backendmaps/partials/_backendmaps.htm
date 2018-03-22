@@ -4,7 +4,7 @@
     <div
         id="<?= $this->getId() ?>"
         class="field-google-place">
-        <div id="map" style="height: 300px; width: 100%"></div>
+        <div id="<?= $this->getId('textarea') ?>-div" style="height: 300px; width: 100%"></div>
         <input
             type="hidden"
             name="<?= $name ?>"
@@ -15,8 +15,16 @@
             <?= $field->getAttributes() ?>
             <?= $this->getFieldMapAttributes() ?>
             />
-        <script type="text/javascript">
-            var inputLatLngID = "<?= $this->getId('textarea') ?>";
-        </script>
     </div>
 <?php endif ?>
+
+<script type="text/javascript">
+$(function(){
+    let fieldName = "<?= $field->fieldName; ?>"
+    let mapDiv = "<?= $this->getId('textarea') ?>";
+    let getMapPosition = $("#" + mapDiv).val().split(',');
+
+    marker["<?= $field->fieldName; ?>"] = fieldName;
+    inicializar(getMapPosition[0], getMapPosition[1], 15, fieldName, mapDiv, true);
+});
+</script>
