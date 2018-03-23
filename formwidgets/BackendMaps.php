@@ -17,9 +17,9 @@ use Aldea\BackendMaps\Models\Settings;
  */
 class BackendMaps extends FormWidgetBase
 {
-    // Default latitude and longitude
-    private $latitude = '37.386051';
-    private $longitude = '-122.083855';
+    private $apiKey;
+    private $latitude;
+    private $longitude;
 
     protected $fieldPosition;
 
@@ -38,7 +38,6 @@ class BackendMaps extends FormWidgetBase
 
         // If there is no value assigned, we set the default value configured in the YAML file
         if (empty($this->vars['value'])) {
-
             $this->fieldPosition['latitude'] = !empty($this->fieldPosition['latitude']) ? $this->fieldPosition['latitude'] : $this->latitude;
             $this->fieldPosition['longitude'] = !empty($this->fieldPosition['longitude']) ? $this->fieldPosition['longitude'] : $this->longitude;
 
@@ -71,9 +70,20 @@ class BackendMaps extends FormWidgetBase
 
     public function loadAssets()
     {
-        $apiKey = Settings::instance()->address_map_key;
+        $this->_setFromSettings();
 
-        $this->addJs('//maps.googleapis.com/maps/api/js?libraries=places&key=' . $apiKey);
+        $this->addJs('//maps.googleapis.com/maps/api/js?libraries=places&key=' . $this->apiKey);
         $this->addJs('js/main.js', 'core');
+    }
+
+    private function _setFromSettings()
+    {
+        $settingsInstance = Settings::instance();
+
+        $latLong = explode(',', $settingsInstance->attributes['address_map']);
+
+        $this->apiKey = $settingsInstance->attributes['address_map_key'] ?? '';
+        $this->latitude = $latLong[0] ?? '37.386051';
+        $this->longitude = $latLong[1] ?? '-122.083855';
     }
 }

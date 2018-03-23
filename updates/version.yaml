@@ -4,3 +4,5 @@
   - The gmap component is added to display the map in the frontend.
 1.0.3:
   - Now it is already possible to instantiate more than one map in the same view.
+1.0.4:
+  - Minimal corrections in the location of the map.
