@@ -80,10 +80,14 @@ class BackendMaps extends FormWidgetBase
     {
         $settingsInstance = Settings::instance();
 
-        $latLong = explode(',', $settingsInstance->attributes['address_map']);
+        if(isset($settingsInstance->attributes['address_map'])){
+          $latLong = explode(',', $settingsInstance->attributes['address_map']);
+        }
 
-        $this->apiKey = $settingsInstance->attributes['address_map_key'] ?? '';
-        $this->latitude = $latLong[0] ?? '37.386051';
-        $this->longitude = $latLong[1] ?? '-122.083855';
+        if(isset($settingsInstance->attributes['address_map_key'])){
+          $this->apiKey = $settingsInstance->attributes['address_map_key'] ?? '';
+          $this->latitude = $latLong[0] ?? '37.386051';
+          $this->longitude = $latLong[1] ?? '-122.083855';
+        }
     }
 }
